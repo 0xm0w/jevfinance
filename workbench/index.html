@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>JevFinance — Workbench</title><link rel="stylesheet" href="/assets/style.css"><script src="https://cdn.jsdelivr.net/npm/klinecharts@9.8.11/dist/klinecharts.min.js"></script><script src="/assets/data.js"></script></head><body><div class="page">
+<nav class="nav"><a class="logo" href="/">JEV<i>FINANCE</i></a>
+<a class="" href="/archive/">Editions</a><a class="" href="/research/">Research</a>
+<a class="on" href="/workbench/">Workbench</a><a class="" href="/portfolio/">Portfolio</a>
+<a href="/methodology/">Methodology</a><span class="live">● oracle · jeb-index v0.3 · next 08:30 ET</span></nav><div class="rule2" style="margin-top:12px"></div>
+<h1 style="font-size:38px">The Workbench</h1><p class="deck">Price, temperature and strategy equity on one chart — rendered entirely in your browser from the oracle's static JSON.</p>
+<div class="chart" id="kc" style="height:640px"></div>
+<div class="legend"><span><i style="background:#1c1917"></i>BTC/USD</span><span><i style="background:#c2410c"></i>JEB P2 equity</span><span><i style="background:#3b6ea5"></i>P3 equity</span><span><i style="background:#8e7cc3"></i>S&amp;P 500</span><span><i style="background:#a8a29e"></i>Gold</span><span><i style="background:#d98b52"></i>JEB temperature (pane)</span></div>
+<footer><span>zero request-time compute</span><span>chart: klinecharts</span></footer></div>
+<script>(function(){const el=document.getElementById("kc");const KC=window.KLineCharts||window.klinecharts;
+if(!KC||!KC.init){el.innerHTML="<p style='font-family:var(--mono);font-size:12px;color:#57534e;padding:30px'>chart library CDN unavailable offline.</p>";return}
+const chart=KC.init(el);const candles=DATA.px.map((p,i)=>i===0?null:({timestamp:new Date(DATA.days[i]+"T00:00:00Z").getTime(),open:DATA.px[i-1],high:Math.max(p,DATA.px[i-1]),low:Math.min(p,DATA.px[i-1]),close:p})).filter(Boolean);
+const at=a=>kl=>kl.map(k=>{const d=new Date(k.timestamp).toISOString().slice(0,10);const i=DATA.days.indexOf(d);return i<0?null:(a[i]==null?null:a[i])});
+const reg=(n2,a,c)=>KC.registerIndicator({name:n2,shortName:n2,calc:at(a),figures:[{key:"v",title:n2,type:"line",styles:()=>({color:c})}]});
+reg("P2EQ",BENCH.p2||[],"#c2410c");reg("P3EQ",BENCH.p3||[],"#3b6ea5");reg("SPXEQ",BENCH.spx||[],"#8e7cc3");reg("GOLDEQ",BENCH.gold||[],"#a8a29e");
+KC.registerIndicator({name:"JEBT",shortName:"JEB",calc:at(DATA.jeb.map(v=>v==null?null:v/100)),figures:[{key:"v",title:"JEB",type:"line",styles:()=>({color:"#d98b52"})}]});
+chart.applyNewData(candles);
+chart.createIndicator({name:"P2EQ",isStack:true},true,{id:"pane_eq",height:150});
+chart.createIndicator({name:"P3EQ",isStack:true},true,{id:"pane_eq"});
+chart.createIndicator({name:"SPXEQ",isStack:true},true,{id:"pane_eq"});
+chart.createIndicator({name:"GOLDEQ",isStack:true},true,{id:"pane_eq"});
+chart.createIndicator({name:"JEBT"},false,{id:"pane_j",height:100});})();</script></body></html>

@@ -1,22 +1,201 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><title>JevFinance — Workbench</title><link rel="stylesheet" href="/assets/style.css"><script src="https://cdn.jsdelivr.net/npm/klinecharts@9.8.11/dist/klinecharts.min.js"></script><script src="/assets/data.js"></script></head><body><div class="page">
-<nav class="nav"><a class="logo" href="/">JEV<i>FINANCE</i></a>
-<a class="" href="/archive/">Editions</a><a class="" href="/research/">Research</a>
-<a class="on" href="/workbench/">Workbench</a><a class="" href="/portfolio/">Portfolio</a>
-<a href="/methodology/">Methodology</a><span class="live">● oracle · jeb-index v0.3 · next 08:30 ET</span></nav><div class="rule2" style="margin-top:12px"></div>
-<h1 style="font-size:38px">The Workbench</h1><p class="deck">Price, temperature and strategy equity on one chart — rendered entirely in your browser from the oracle's static JSON.</p>
-<div class="chart" id="kc" style="height:640px"></div>
-<div class="legend"><span><i style="background:#1c1917"></i>BTC/USD</span><span><i style="background:#c2410c"></i>JEB P2 equity</span><span><i style="background:#3b6ea5"></i>P3 equity</span><span><i style="background:#8e7cc3"></i>S&amp;P 500</span><span><i style="background:#a8a29e"></i>Gold</span><span><i style="background:#d98b52"></i>JEB temperature (pane)</span></div>
-<footer><span>zero request-time compute</span><span>chart: klinecharts</span></footer></div>
-<script>(function(){const el=document.getElementById("kc");const KC=window.KLineCharts||window.klinecharts;
-if(!KC||!KC.init){el.innerHTML="<p style='font-family:var(--mono);font-size:12px;color:#57534e;padding:30px'>chart library CDN unavailable offline.</p>";return}
-const chart=KC.init(el);const candles=DATA.px.map((p,i)=>i===0?null:({timestamp:new Date(DATA.days[i]+"T00:00:00Z").getTime(),open:DATA.px[i-1],high:Math.max(p,DATA.px[i-1]),low:Math.min(p,DATA.px[i-1]),close:p})).filter(Boolean);
-const at=a=>kl=>kl.map(k=>{const d=new Date(k.timestamp).toISOString().slice(0,10);const i=DATA.days.indexOf(d);return i<0?null:(a[i]==null?null:a[i])});
-const reg=(n2,a,c)=>KC.registerIndicator({name:n2,shortName:n2,calc:at(a),figures:[{key:"v",title:n2,type:"line",styles:()=>({color:c})}]});
-reg("P2EQ",BENCH.p2||[],"#c2410c");reg("P3EQ",BENCH.p3||[],"#3b6ea5");reg("SPXEQ",BENCH.spx||[],"#8e7cc3");reg("GOLDEQ",BENCH.gold||[],"#a8a29e");
-KC.registerIndicator({name:"JEBT",shortName:"JEB",calc:at(DATA.jeb.map(v=>v==null?null:v/100)),figures:[{key:"v",title:"JEB",type:"line",styles:()=>({color:"#d98b52"})}]});
-chart.applyNewData(candles);
-chart.createIndicator({name:"P2EQ",isStack:true},true,{id:"pane_eq",height:150});
-chart.createIndicator({name:"P3EQ",isStack:true},true,{id:"pane_eq"});
-chart.createIndicator({name:"SPXEQ",isStack:true},true,{id:"pane_eq"});
-chart.createIndicator({name:"GOLDEQ",isStack:true},true,{id:"pane_eq"});
-chart.createIndicator({name:"JEBT"},false,{id:"pane_j",height:100});})();</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>JevFinance — Workbench</title>
+<meta name="description" content="Interactive workbench: JF1 Core and JF2 Defensive equities vs BTC buy-and-hold, S&P 500 and Gold, with the JEB temperature heatmap overlaid — blue cold, red hot.">
+<link rel="canonical" href="https://jevfinance.whativedone.xyz/workbench/">
+<link rel="stylesheet" href="/assets/style.css">
+<script src="/assets/data.js"></script>
+<style>
+  #tip .row{display:flex;gap:8px;align-items:center;margin:1px 0}
+  #tip .sw{display:inline-block;width:9px;height:9px;border-radius:2px}
+  #main{cursor:crosshair;position:relative}
+</style>
+</head>
+<body>
+<div class="page">
+  <nav class="nav">
+    <a class="logo" href="/">JEV<i>FINANCE</i></a>
+    <a href="/archive/">Editions</a><a href="/research/">Research</a>
+    <a class="on" href="/workbench/">Workbench</a>
+    <a href="/portfolio/">Portfolio</a><a href="/methodology/">Methodology</a>
+    <span class="live">● oracle · jeb-index v0.3 · next 08:30 ET</span>
+  </nav>
+  <div class="rule2" style="margin-top:12px"></div>
+  <h1 style="font-size:38px">The Workbench</h1>
+  <p class="deck">Both model equities against buy-&amp;-hold, the S&amp;P 500 and Gold — with the JEB temperature painted over the chart as a heatmap: blue is cold, red is hot. Hover anywhere for exact values at that date. Rendered in your browser from the oracle's static JSON.</p>
+  <div class="panel" style="position:relative;padding:8px">
+    <div id="main"></div>
+    <div id="tip" style="display:none;position:absolute;pointer-events:none;font-family:var(--mono);font-size:11px;background:#fffdf7;border:1px solid var(--hair2);border-radius:8px;padding:8px 10px;white-space:nowrap;z-index:5;box-shadow:0 4px 14px rgba(28,25,23,.12)"></div>
+  </div>
+  <div class="legend">
+    <span><i style="background:#1c1917"></i>BTC buy&amp;hold</span>
+    <span><i style="background:#c2410c"></i>JF1 Core</span>
+    <span><i style="background:#3b6ea5"></i>JF2 Defensive</span>
+    <span><i style="background:#8e7cc3"></i>S&amp;P 500</span>
+    <span><i style="background:#a8a29e"></i>Gold</span>
+    <span><i style="background:#3d8fd1"></i>JEB cold</span>
+    <span><i style="background:#d64541"></i>hot — background shading + lower line</span>
+    <span>hover for values</span>
+  </div>
+
+  <h2 style="font-size:19px">Exposure heatmap · JF1 by month, 2017→today</h2>
+  <div class="panel" id="lv"></div>
+  <div class="legend">
+    <span><i style="background:#3d8fd1"></i>A · cash</span>
+    <span><i style="background:#7fb8e0"></i>B · 25%</span>
+    <span><i style="background:#b8b2a6"></i>C · 50%</span>
+    <span><i style="background:#e8964f"></i>D · 75%</span>
+    <span><i style="background:#d64541"></i>E · 100%</span>
+    <span>cell = average daily level that month · hover for detail</span>
+  </div>
+
+  <footer><span>zero request-time compute — this page is a file, the data is a file</span><span>data via /api/v1/ · updated daily 08:30 ET</span></footer>
+</div>
+<script>
+(function(){
+"use strict";
+var D = DATA, B = BENCH;
+function ffill(arr) {
+  var m = new Map(B.days.map(function (d, i) { return [d, arr[i] == null ? null : arr[i]]; }));
+  var last = null;
+  return D.days.map(function (d) { if (m.has(d)) last = m.get(d); return last; });
+}
+var SERIES = [
+  { n: "JF1 Core",      v: ffill(B.p2),  c: "#c2410c", w: 2.4 },
+  { n: "JF2 Defensive", v: ffill(B.p3),  c: "#3b6ea5", w: 2 },
+  { n: "BTC buy&hold",  v: ffill(B.bh),  c: "#1c1917", w: 1.4 },
+  { n: "S&P 500",       v: ffill(B.spx), c: "#8e7cc3", w: 1.4 },
+  { n: "Gold",          v: ffill(B.gold),c: "#a8a29e", w: 1.4 }
+];
+function jebColor(v) {
+  if (v == null) return "#d6d3d1";
+  if (v < 25) return "#3d8fd1";
+  if (v < 45) return "#7fb8e0";
+  if (v < 55) return "#b8b2a6";
+  if (v < 75) return "#e8964f";
+  return "#d64541";
+}
+var N = D.days.length;
+var W = 1100, H = 580;
+var EQ = { t: 16, h: 330 };
+var JB = { t: 396, h: 160 };
+var padL = 46, padR = 16, padB = 14;
+var xs = function (i) { return padL + (W - padL - padR) * i / (N - 1); };
+var all = [];
+SERIES.forEach(function (s) { s.v.forEach(function (v) { if (v != null) all.push(v); }); });
+var lo = Math.min.apply(null, all), hi = Math.max.apply(null, all);
+var yeq = function (v) { return EQ.t + EQ.h * (1 - (Math.log10(v) - Math.log10(lo)) / (Math.log10(hi) - Math.log10(lo))); };
+var yjb = function (v) { return JB.t + JB.h * (1 - v / 100); };
+/* 1. svg opening */
+var svg = '<svg id="mainsvg" viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:auto;display:block">';
+/* 2. temperature heatmap overlay behind the curves */
+for (var hi2 = 0; hi2 < N; hi2 += 2) {
+  var hj = D.jeb[hi2];
+  if (hj == null) continue;
+  var hx1 = xs(Math.max(0, hi2 - 1)), hx2 = xs(Math.min(N - 1, hi2 + 1));
+  svg += '<rect x="' + hx1.toFixed(1) + '" y="' + EQ.t + '" width="' + (hx2 - hx1).toFixed(1) + '" height="' + EQ.h + '" fill="' + jebColor(hj) + '" opacity="0.13"/>';
+}
+/* 3. equity y ticks */
+for (var g = 0; g <= 4; g++) {
+  var gv = lo * Math.pow(hi / lo, g / 4);
+  svg += '<text x="6" y="' + (yeq(gv) + 4) + '" font-size="10" fill="#a8a29e" font-family="monospace">' + gv.toFixed(2) + '</text>';
+}
+/* 4. equity curves */
+SERIES.forEach(function (s) {
+  var d = "", pen = false;
+  s.v.forEach(function (v, i) { if (v == null) { pen = false; return; } d += (pen ? "L" : "M") + xs(i).toFixed(1) + " " + yeq(v).toFixed(1) + " "; pen = true; });
+  svg += '<path d="' + d + '" fill="none" stroke="' + s.c + '" stroke-width="' + s.w + '"/>';
+});
+/* 5. JEB pane: bands + temperature-colored line */
+var JBANDS = [[0, 24, "#e0f2fe"], [25, 44, "#dbeafe"], [45, 54, "#e7e5e4"], [55, 74, "#ffedd5"], [75, 100, "#fee2e2"]];
+JBANDS.forEach(function (b2) {
+  var y1 = yjb(b2[1]), y2 = yjb(b2[0]);
+  svg += '<rect x="' + padL + '" y="' + y1 + '" width="' + (W - padL - padR) + '" height="' + (y2 - y1) + '" fill="' + b2[2] + '"/>';
+});
+svg += '<text x="6" y="' + (yjb(100) + 10) + '" font-size="10" fill="#a8a29e" font-family="monospace">100</text>';
+svg += '<text x="6" y="' + (yjb(0) + 4) + '" font-size="10" fill="#a8a29e" font-family="monospace">0</text>';
+svg += '<text x="' + (padL + 8) + '" y="' + (JB.t + 16) + '" font-size="10" fill="#c2410c" font-family="monospace">JEB temperature</text>';
+D.jeb.forEach(function (v, i) {
+  if (v == null || i === 0) return;
+  var pv = D.jeb[i - 1];
+  if (pv == null) return;
+  svg += '<line x1="' + xs(i - 1).toFixed(1) + '" y1="' + yjb(pv).toFixed(1) + '" x2="' + xs(i).toFixed(1) + '" y2="' + yjb(v).toFixed(1) + '" stroke="' + jebColor((v + pv) / 2) + '" stroke-width="2"/>';
+});
+/* 6. divider + year ticks + crosshair */
+svg += '<line x1="' + padL + '" y1="' + (JB.t - 14) + '" x2="' + (W - padR) + '" y2="' + (JB.t - 14) + '" stroke="rgba(28,25,23,.18)"/>';
+D.days.forEach(function (d2, i) {
+  if (d2.slice(5, 7) === "01" && (!D.days[i - 1] || D.days[i - 1].slice(0, 4) !== d2.slice(0, 4)))
+    svg += '<text x="' + xs(i) + '" y="' + (H - 2) + '" font-size="10" fill="#a8a29e" text-anchor="middle" font-family="monospace">' + d2.slice(0, 4) + '</text>';
+});
+svg += '<line id="xhair" x1="0" y1="' + EQ.t + '" x2="0" y2="' + (JB.t + JB.h) + '" stroke="#1c1917" stroke-width="1" stroke-dasharray="3 3" visibility="hidden"/>';
+svg += '</svg>';
+/* 7. inject + hover */
+var mainEl = document.getElementById("main");
+mainEl.innerHTML = svg + '<div style="position:absolute;top:8px;left:8px;right:8px;bottom:8px;cursor:crosshair"></div>';
+var overlay = mainEl.lastChild;
+var xhair = document.getElementById("xhair");
+var tip = document.getElementById("tip");
+var NAMES = ["JF1 Core", "JF2 Defensive", "BTC buy&hold", "S&P 500", "Gold"];
+var COLS = ["#c2410c", "#3b6ea5", "#1c1917", "#8e7cc3", "#a8a29e"];
+var ARR = [SERIES[0].v, SERIES[1].v, SERIES[2].v, SERIES[3].v, SERIES[4].v];
+var LVL = ["A · cash", "B · 25%", "C · 50%", "D · 75%", "E · 100%"];
+overlay.addEventListener("mousemove", function (ev) {
+  var r = mainEl.getBoundingClientRect();
+  var mx = (ev.clientX - r.left - 8) / (r.width - 16) * W;
+  var i = Math.round((mx - padL) / (W - padL - padR) * (N - 1));
+  if (i < 0 || i >= N) { tip.style.display = "none"; xhair.setAttribute("visibility", "hidden"); return; }
+  xhair.setAttribute("x1", xs(i)); xhair.setAttribute("x2", xs(i)); xhair.setAttribute("visibility", "visible");
+  var jv = D.jeb[i];
+  var band = jv == null ? "—" : jv < 25 ? "Deep Freeze" : jv < 45 ? "Cold" : jv < 55 ? "Mild" : jv < 75 ? "Warm" : "Overheated";
+  var rows = "<div style='font-weight:600;margin-bottom:3px'>" + D.days[i] + "</div>";
+  rows += "<div class='row'><span class='sw' style='background:" + jebColor(jv) + "'></span>JEB: <b>" + (jv == null ? "—" : jv.toFixed(1)) + "</b> · " + band + "</div>";
+  var lvl = D.lvl[i];
+  rows += "<div class='row'><span class='sw' style='background:" + (lvl == null ? '#b8b2a6' : LC[lvl]) + "'></span>JF1 level: <b>" + (lvl == null ? "—" : LVL[lvl]) + "</b></div>";
+  for (var k = 0; k < 5; k++) {
+    var v = ARR[k][i];
+    rows += "<div class='row'><span class='sw' style='background:" + COLS[k] + "'></span>" + NAMES[k] + ": <b>" + (v == null ? "—" : v.toFixed(2) + "×") + "</b></div>";
+  }
+  tip.innerHTML = rows;
+  tip.style.display = "block";
+  var px = (xs(i) / W) * r.width + 14;
+  tip.style.left = Math.min(px, r.width - 210) + "px";
+  tip.style.top = "14px";
+});
+overlay.addEventListener("mouseleave", function () { tip.style.display = "none"; xhair.setAttribute("visibility", "hidden"); });
+
+/* ---------- exposure heatmap: years x months ---------- */
+var LC = ["#3d8fd1", "#7fb8e0", "#b8b2a6", "#e8964f", "#d64541"];
+var LBL = ["A cash", "B 25%", "C 50%", "D 75%", "E 100%"];
+var MN = ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"];
+var cells = {};
+for (var q = 0; q < D.days.length; q++) {
+  var dd = D.days[q], lv = D.lvl[q];
+  if (lv == null) continue;
+  var yq = dd.slice(0, 4), mq = +dd.slice(5, 7) - 1, kq = yq + "-" + mq;
+  var cq = cells[kq] || (cells[kq] = { s: 0, n: 0 });
+  cq.s += lv; cq.n++;
+}
+var yrs = [];
+D.days.forEach(function (d2) { var y2 = d2.slice(0, 4); if (yrs.indexOf(y2) < 0) yrs.push(y2); });
+var CW = 72, CH = 40, OX = 56, OY = 26;
+var ls = '<svg viewBox="0 0 1000 ' + (OY + yrs.length * CH + 16) + '" style="width:100%;height:auto">';
+MN.forEach(function (m3, mi) { ls += '<text x="' + (OX + mi * CW + CW / 2) + '" y="16" font-size="10" fill="#a8a29e" text-anchor="middle" font-family="monospace">' + m3 + '</text>'; });
+yrs.forEach(function (y2, yi) {
+  ls += '<text x="8" y="' + (OY + yi * CH + CH / 2 + 4) + '" font-size="11" fill="#a8a29e" font-family="monospace">' + y2 + '</text>';
+  for (var mi = 0; mi < 12; mi++) {
+    var c2 = cells[y2 + "-" + mi];
+    var x = OX + mi * CW + 3, yy = OY + yi * CH + 3;
+    if (!c2 || !c2.n) { ls += '<rect x="' + x + '" y="' + yy + '" width="' + (CW - 6) + '" height="' + (CH - 6) + '" rx="4" fill="none" stroke="rgba(28,25,23,.08)"/>'; continue; }
+    var mean = c2.s / c2.n, lvl = Math.max(0, Math.min(4, Math.round(mean)));
+    ls += '<rect x="' + x + '" y="' + yy + '" width="' + (CW - 6) + '" height="' + (CH - 6) + '" rx="4" fill="' + LC[lvl] + '" opacity="0.92"><title>' + y2 + "-" + String(mi + 1).padStart(2, "0") + " · avg level " + mean.toFixed(2) + " (" + LBL[lvl] + ") · " + c2.n + " days</title></rect>";
+    ls += '<text x="' + (x + (CW - 6) / 2) + '" y="' + (yy + CH / 2 + 1) + '" font-size="11" text-anchor="middle" font-family="monospace" fill="' + (lvl === 4 ? "#fff" : "#1c1917") + '">' + mean.toFixed(1) + '</text>';
+  }
+});
+ls += "</svg>";
+document.getElementById("lv").innerHTML = ls;
+})();
+</script>
+</body>
+</html>

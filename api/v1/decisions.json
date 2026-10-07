@@ -1,0 +1,705 @@
+{
+ "asOf": "2026-10-06",
+ "decisions": [
+  {
+   "d": "2026-09-17",
+   "model": "JF2",
+   "from": "E",
+   "to": "D",
+   "choice": "TP LONG",
+   "noul": {
+    "side": "FLAT",
+    "p": 0.61
+   },
+   "score": 0.7,
+   "jeb": 70,
+   "reason": "JEB 70 or the regime gate said stand down — exposure cut."
+  },
+  {
+   "d": "2026-09-17",
+   "model": "JF1",
+   "from": "E",
+   "to": "D",
+   "choice": "TP LONG",
+   "noul": {
+    "side": "FLAT",
+    "p": 0.61
+   },
+   "score": 0.7,
+   "jeb": 70,
+   "reason": "JEB 70 cooled below the exit band — confirmation met, exposure cut."
+  },
+  {
+   "d": "2026-09-12",
+   "model": "JF2",
+   "from": "D",
+   "to": "E",
+   "choice": "LONG",
+   "noul": {
+    "side": "LONG",
+    "p": 0.61
+   },
+   "score": 0.85,
+   "jeb": 74.2,
+   "reason": "JEB 74.2 warranted more aggression and the regime gate allowed it — exposure raised."
+  },
+  {
+   "d": "2026-09-12",
+   "model": "JF1",
+   "from": "D",
+   "to": "E",
+   "choice": "LONG",
+   "noul": {
+    "side": "LONG",
+    "p": 0.61
+   },
+   "score": 0.85,
+   "jeb": 74.2,
+   "reason": "JEB 74.2 held above the 70 band edge for a second day — 2-day confirmation met, exposure raised."
+  },
+  {
+   "d": "2026-09-11",
+   "model": "JF2",
+   "from": "E",
+   "to": "D",
+   "choice": "TP LONG",
+   "noul": {
+    "side": "FLAT",
+    "p": 0.61
+   },
+   "score": 0.7,
+   "jeb": 74,
+   "reason": "JEB 74 or the regime gate said stand down — exposure cut."
+  },
+  {
+   "d": "2026-09-11",
+   "model": "JF1",
+   "from": "E",
+   "to": "D",
+   "choice": "TP LONG",
+   "noul": {
+    "side": "FLAT",
+    "p": 0.61
+   },
+   "score": 0.7,
+   "jeb": 74,
+   "reason": "JEB 74 cooled below the exit band — confirmation met, exposure cut."
+  },
+  {
+   "d": "2026-08-21",
+   "model": "JF2",
+   "from": "C",
+   "to": "E",
+   "choice": "LONG",
+   "noul": {
+    "side": "LONG",
+    "p": 0.67
+   },
+   "score": 0.85,
+   "jeb": 73.9,
+   "reason": "JEB 73.9 warranted more aggression and the regime gate allowed it — exposure raised."
+  },
+  {
+   "d": "2026-08-21",
+   "model": "JF1",
+   "from": "D",
+   "to": "E",
+   "choice": "LONG",
+   "noul": {
+    "side": "LONG",
+    "p": 0.61
+   },
+   "score": 0.85,
+   "jeb": 73.9,
+   "reason": "JEB 73.9 held above the 70 band edge for a second day — 2-day confirmation met, exposure raised."
+  },
+  {
+   "d": "2026-08-20",
+   "model": "JF2",
+   "from": "B",
+   "to": "C",
+   "choice": "LONG",
+   "noul": {
+    "side": "LONG",
+    "p": 0.61
+   },
+   "score": 0.55,
+   "jeb": 71.1,
+   "reason": "JEB 71.1 warranted more aggression and the regime gate allowed it — exposure raised."
+  },
+  {
+   "d": "2026-08-19",
+   "model": "JF1",
+   "from": "C",
+   "to": "D",
+   "choice": "LONG",
+   "noul": {
+    "side": "LONG",
+    "p": 0.61
+   },
+   "score": 0.7,
+   "jeb": 62,
+   "reason": "JEB 62 held above the 55 band edge for a second day — 2-day confirmation met, exposure raised."
+  },
+  {
+   "d": "2026-08-14",
+   "model": "JF1",
+   "from": "D",
+   "to": "C",
+   "choice": "TP LONG",
+   "noul": {
+    "side": "FLAT",
+    "p": 0.61
+   },
+   "score": 0.55,
+   "jeb": 54.8,
+   "reason": "JEB 54.8 cooled below the exit band — confirmation met, exposure cut."
+  },
+  {
+   "d": "2026-08-06",
+   "model": "JF1",
+   "from": "C",
+   "to": "D",
+   "choice": "LONG",
+   "noul": {
+    "side": "LONG",
+    "p": 0.61
+   },
+   "score": 0.7,
+   "jeb": 60,
+   "reason": "JEB 60 held above the 55 band edge for a second day — 2-day confirmation met, exposure raised."
+  },
+  {
+   "d": "2026-07-31",
+   "model": "JF1",
+   "from": "B",
+   "to": "C",
+   "choice": "LONG",
+   "noul": {
+    "side": "LONG",
+    "p": 0.61
+   },
+   "score": 0.55,
+   "jeb": 50.2,
+   "reason": "JEB 50.2 held above the 45 band edge for a second day — 2-day confirmation met, exposure raised."
+  },
+  {
+   "d": "2026-07-28",
+   "model": "JF1",
+   "from": "C",
+   "to": "B",
+   "choice": "TP LONG",
+   "noul": {
+    "side": "FLAT",
+    "p": 0.61
+   },
+   "score": 0.4,
+   "jeb": 43.6,
+   "reason": "JEB 43.6 cooled below the exit band — confirmation met, exposure cut."
+  },
+  {
+   "d": "2026-07-27",
+   "model": "JF1",
+   "from": "B",
+   "to": "C",
+   "choice": "LONG",
+   "noul": {
+    "side": "LONG",
+    "p": 0.61
+   },
+   "score": 0.55,
+   "jeb": 44.6,
+   "reason": "JEB 44.6 held above the 45 band edge for a second day — 2-day confirmation met, exposure raised."
+  },
+  {
+   "d": "2026-07-26",
+   "model": "JF1",
+   "from": "C",
+   "to": "B",
+   "choice": "TP LONG",
+   "noul": {
+    "side": "FLAT",
+    "p": 0.61
+   },
+   "score": 0.4,
+   "jeb": 45.4,
+   "reason": "JEB 45.4 cooled below the exit band — confirmation met, exposure cut."
+  },
+  {
+   "d": "2026-07-21",
+   "model": "JF1",
+   "from": "B",
+   "to": "C",
+   "choice": "LONG",
+   "noul": {
+    "side": "LONG",
+    "p": 0.61
+   },
+   "score": 0.55,
+   "jeb": 49.4,
+   "reason": "JEB 49.4 held above the 45 band edge for a second day — 2-day confirmation met, exposure raised."
+  },
+  {
+   "d": "2026-07-20",
+   "model": "JF1",
+   "from": "C",
+   "to": "B",
+   "choice": "TP LONG",
+   "noul": {
+    "side": "FLAT",
+    "p": 0.61
+   },
+   "score": 0.4,
+   "jeb": 45.1,
+   "reason": "JEB 45.1 cooled below the exit band — confirmation met, exposure cut."
+  },
+  {
+   "d": "2026-07-17",
+   "model": "JF1",
+   "from": "D",
+   "to": "C",
+   "choice": "TP LONG",
+   "noul": {
+    "side": "FLAT",
+    "p": 0.61
+   },
+   "score": 0.55,
+   "jeb": 48.2,
+   "reason": "JEB 48.2 cooled below the exit band — confirmation met, exposure cut."
+  },
+  {
+   "d": "2026-07-15",
+   "model": "JF1",
+   "from": "C",
+   "to": "D",
+   "choice": "LONG",
+   "noul": {
+    "side": "LONG",
+    "p": 0.61
+   },
+   "score": 0.7,
+   "jeb": 55.1,
+   "reason": "JEB 55.1 held above the 55 band edge for a second day — 2-day confirmation met, exposure raised."
+  },
+  {
+   "d": "2026-07-14",
+   "model": "JF1",
+   "from": "D",
+   "to": "C",
+   "choice": "TP LONG",
+   "noul": {
+    "side": "FLAT",
+    "p": 0.61
+   },
+   "score": 0.55,
+   "jeb": 56.2,
+   "reason": "JEB 56.2 cooled below the exit band — confirmation met, exposure cut."
+  },
+  {
+   "d": "2026-07-11",
+   "model": "JF1",
+   "from": "C",
+   "to": "D",
+   "choice": "LONG",
+   "noul": {
+    "side": "LONG",
+    "p": 0.61
+   },
+   "score": 0.7,
+   "jeb": 57.8,
+   "reason": "JEB 57.8 held above the 55 band edge for a second day — 2-day confirmation met, exposure raised."
+  },
+  {
+   "d": "2026-07-04",
+   "model": "JF1",
+   "from": "B",
+   "to": "C",
+   "choice": "LONG",
+   "noul": {
+    "side": "LONG",
+    "p": 0.61
+   },
+   "score": 0.55,
+   "jeb": 46.9,
+   "reason": "JEB 46.9 held above the 45 band edge for a second day — 2-day confirmation met, exposure raised."
+  },
+  {
+   "d": "2026-06-23",
+   "model": "JF2",
+   "from": "A",
+   "to": "B",
+   "choice": "LONG",
+   "noul": {
+    "side": "LONG",
+    "p": 0.61
+   },
+   "score": 0.4,
+   "jeb": 32.9,
+   "reason": "JEB 32.9 warranted more aggression and the regime gate allowed it — exposure raised."
+  },
+  {
+   "d": "2026-06-23",
+   "model": "JF1",
+   "from": "A",
+   "to": "B",
+   "choice": "LONG",
+   "noul": {
+    "side": "LONG",
+    "p": 0.61
+   },
+   "score": 0.4,
+   "jeb": 32.9,
+   "reason": "JEB 32.9 held above the 30 band edge for a second day — 2-day confirmation met, exposure raised."
+  },
+  {
+   "d": "2026-06-22",
+   "model": "JF2",
+   "from": "B",
+   "to": "A",
+   "choice": "TP LONG",
+   "noul": {
+    "side": "FLAT",
+    "p": 0.61
+   },
+   "score": 0.25,
+   "jeb": 30.4,
+   "reason": "JEB 30.4 or the regime gate said stand down — exposure cut into capital preservation."
+  },
+  {
+   "d": "2026-06-22",
+   "model": "JF1",
+   "from": "B",
+   "to": "A",
+   "choice": "TP LONG",
+   "noul": {
+    "side": "FLAT",
+    "p": 0.61
+   },
+   "score": 0.25,
+   "jeb": 30.4,
+   "reason": "JEB 30.4 cooled below the exit band — confirmation met, exposure cut."
+  },
+  {
+   "d": "2026-06-20",
+   "model": "JF2",
+   "from": "A",
+   "to": "B",
+   "choice": "LONG",
+   "noul": {
+    "side": "LONG",
+    "p": 0.61
+   },
+   "score": 0.4,
+   "jeb": 31.7,
+   "reason": "JEB 31.7 warranted more aggression and the regime gate allowed it — exposure raised."
+  },
+  {
+   "d": "2026-06-20",
+   "model": "JF1",
+   "from": "A",
+   "to": "B",
+   "choice": "LONG",
+   "noul": {
+    "side": "LONG",
+    "p": 0.61
+   },
+   "score": 0.4,
+   "jeb": 31.7,
+   "reason": "JEB 31.7 held above the 30 band edge for a second day — 2-day confirmation met, exposure raised."
+  },
+  {
+   "d": "2026-06-14",
+   "model": "JF2",
+   "from": "B",
+   "to": "A",
+   "choice": "TP LONG",
+   "noul": {
+    "side": "FLAT",
+    "p": 0.61
+   },
+   "score": 0.25,
+   "jeb": 23.8,
+   "reason": "JEB 23.8 or the regime gate said stand down — exposure cut into capital preservation."
+  },
+  {
+   "d": "2026-06-14",
+   "model": "JF1",
+   "from": "B",
+   "to": "A",
+   "choice": "TP LONG",
+   "noul": {
+    "side": "FLAT",
+    "p": 0.61
+   },
+   "score": 0.25,
+   "jeb": 23.8,
+   "reason": "JEB 23.8 cooled below the exit band — confirmation met, exposure cut."
+  },
+  {
+   "d": "2026-06-06",
+   "model": "JF1",
+   "from": "C",
+   "to": "B",
+   "choice": "TP LONG",
+   "noul": {
+    "side": "FLAT",
+    "p": 0.61
+   },
+   "score": 0.4,
+   "jeb": 41.4,
+   "reason": "JEB 41.4 cooled below the exit band — confirmation met, exposure cut."
+  },
+  {
+   "d": "2026-06-03",
+   "model": "JF1",
+   "from": "D",
+   "to": "C",
+   "choice": "TP LONG",
+   "noul": {
+    "side": "FLAT",
+    "p": 0.61
+   },
+   "score": 0.55,
+   "jeb": 46.9,
+   "reason": "JEB 46.9 cooled below the exit band — confirmation met, exposure cut."
+  },
+  {
+   "d": "2026-05-21",
+   "model": "JF1",
+   "from": "C",
+   "to": "D",
+   "choice": "LONG",
+   "noul": {
+    "side": "LONG",
+    "p": 0.61
+   },
+   "score": 0.7,
+   "jeb": 61.4,
+   "reason": "JEB 61.4 held above the 55 band edge for a second day — 2-day confirmation met, exposure raised."
+  },
+  {
+   "d": "2026-05-18",
+   "model": "JF1",
+   "from": "D",
+   "to": "C",
+   "choice": "TP LONG",
+   "noul": {
+    "side": "FLAT",
+    "p": 0.61
+   },
+   "score": 0.55,
+   "jeb": 52.9,
+   "reason": "JEB 52.9 cooled below the exit band — confirmation met, exposure cut."
+  },
+  {
+   "d": "2026-05-12",
+   "model": "JF1",
+   "from": "C",
+   "to": "D",
+   "choice": "LONG",
+   "noul": {
+    "side": "LONG",
+    "p": 0.61
+   },
+   "score": 0.7,
+   "jeb": 59,
+   "reason": "JEB 59 held above the 55 band edge for a second day — 2-day confirmation met, exposure raised."
+  },
+  {
+   "d": "2026-05-06",
+   "model": "JF1",
+   "from": "B",
+   "to": "C",
+   "choice": "LONG",
+   "noul": {
+    "side": "LONG",
+    "p": 0.61
+   },
+   "score": 0.55,
+   "jeb": 51.4,
+   "reason": "JEB 51.4 held above the 45 band edge for a second day — 2-day confirmation met, exposure raised."
+  },
+  {
+   "d": "2026-04-19",
+   "model": "JF1",
+   "from": "C",
+   "to": "B",
+   "choice": "TP LONG",
+   "noul": {
+    "side": "FLAT",
+    "p": 0.61
+   },
+   "score": 0.4,
+   "jeb": 35.6,
+   "reason": "JEB 35.6 cooled below the exit band — confirmation met, exposure cut."
+  },
+  {
+   "d": "2026-04-16",
+   "model": "JF1",
+   "from": "D",
+   "to": "C",
+   "choice": "TP LONG",
+   "noul": {
+    "side": "FLAT",
+    "p": 0.61
+   },
+   "score": 0.55,
+   "jeb": 45.8,
+   "reason": "JEB 45.8 cooled below the exit band — confirmation met, exposure cut."
+  },
+  {
+   "d": "2026-04-14",
+   "model": "JF1",
+   "from": "C",
+   "to": "D",
+   "choice": "LONG",
+   "noul": {
+    "side": "LONG",
+    "p": 0.61
+   },
+   "score": 0.7,
+   "jeb": 55.7,
+   "reason": "JEB 55.7 held above the 55 band edge for a second day — 2-day confirmation met, exposure raised."
+  },
+  {
+   "d": "2026-04-13",
+   "model": "JF1",
+   "from": "D",
+   "to": "C",
+   "choice": "TP LONG",
+   "noul": {
+    "side": "FLAT",
+    "p": 0.61
+   },
+   "score": 0.55,
+   "jeb": 57.2,
+   "reason": "JEB 57.2 cooled below the exit band — confirmation met, exposure cut."
+  },
+  {
+   "d": "2026-04-11",
+   "model": "JF1",
+   "from": "C",
+   "to": "D",
+   "choice": "LONG",
+   "noul": {
+    "side": "LONG",
+    "p": 0.61
+   },
+   "score": 0.7,
+   "jeb": 59.2,
+   "reason": "JEB 59.2 held above the 55 band edge for a second day — 2-day confirmation met, exposure raised."
+  },
+  {
+   "d": "2026-04-10",
+   "model": "JF1",
+   "from": "B",
+   "to": "C",
+   "choice": "LONG",
+   "noul": {
+    "side": "LONG",
+    "p": 0.61
+   },
+   "score": 0.55,
+   "jeb": 58,
+   "reason": "JEB 58 held above the 45 band edge for a second day — 2-day confirmation met, exposure raised."
+  },
+  {
+   "d": "2026-04-08",
+   "model": "JF2",
+   "from": "A",
+   "to": "B",
+   "choice": "LONG",
+   "noul": {
+    "side": "LONG",
+    "p": 0.61
+   },
+   "score": 0.4,
+   "jeb": 40.3,
+   "reason": "JEB 40.3 warranted more aggression and the regime gate allowed it — exposure raised."
+  },
+  {
+   "d": "2026-04-08",
+   "model": "JF1",
+   "from": "A",
+   "to": "B",
+   "choice": "LONG",
+   "noul": {
+    "side": "LONG",
+    "p": 0.61
+   },
+   "score": 0.4,
+   "jeb": 40.3,
+   "reason": "JEB 40.3 held above the 30 band edge for a second day — 2-day confirmation met, exposure raised."
+  },
+  {
+   "d": "2026-04-07",
+   "model": "JF2",
+   "from": "B",
+   "to": "A",
+   "choice": "TP LONG",
+   "noul": {
+    "side": "FLAT",
+    "p": 0.61
+   },
+   "score": 0.25,
+   "jeb": 35.3,
+   "reason": "JEB 35.3 or the regime gate said stand down — exposure cut into capital preservation."
+  },
+  {
+   "d": "2026-04-07",
+   "model": "JF1",
+   "from": "B",
+   "to": "A",
+   "choice": "TP LONG",
+   "noul": {
+    "side": "FLAT",
+    "p": 0.61
+   },
+   "score": 0.25,
+   "jeb": 35.3,
+   "reason": "JEB 35.3 cooled below the exit band — confirmation met, exposure cut."
+  },
+  {
+   "d": "2026-04-06",
+   "model": "JF2",
+   "from": "A",
+   "to": "B",
+   "choice": "LONG",
+   "noul": {
+    "side": "LONG",
+    "p": 0.61
+   },
+   "score": 0.4,
+   "jeb": 25.7,
+   "reason": "JEB 25.7 warranted more aggression and the regime gate allowed it — exposure raised."
+  },
+  {
+   "d": "2026-04-06",
+   "model": "JF1",
+   "from": "A",
+   "to": "B",
+   "choice": "LONG",
+   "noul": {
+    "side": "LONG",
+    "p": 0.61
+   },
+   "score": 0.4,
+   "jeb": 25.7,
+   "reason": "JEB 25.7 held above the 30 band edge for a second day — 2-day confirmation met, exposure raised."
+  },
+  {
+   "d": "2026-03-28",
+   "model": "JF2",
+   "from": "B",
+   "to": "A",
+   "choice": "TP LONG",
+   "noul": {
+    "side": "FLAT",
+    "p": 0.61
+   },
+   "score": 0.25,
+   "jeb": 24,
+   "reason": "JEB 24 or the regime gate said stand down — exposure cut into capital preservation."
+  }
+ ]
+}

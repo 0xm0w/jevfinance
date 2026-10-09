@@ -1,5 +1,5 @@
 {
- "asOf": "2026-10-07",
+ "asOf": "2026-10-08",
  "note": "equity rebased to 1.0 at series start; every 3rd day sampled",
  "history": [
   {
@@ -7133,6 +7133,12 @@
   {
    "d": "2026-10-05",
    "jeb": 64.5,
+   "jf1": null,
+   "jf2": null
+  },
+  {
+   "d": "2026-10-08",
+   "jeb": 54.5,
    "jf1": null,
    "jf2": null
   }

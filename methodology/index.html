@@ -3,7 +3,7 @@
 <a class="" href="/archive/">Editions</a><a class="" href="/research/">Research</a>
 <a class="" href="/workbench/">Workbench</a><a class="" href="/portfolio/">Portfolio</a>
 <a href="/methodology/">Methodology</a><span class="live">● oracle · jeb-index v0.3 · next 08:30 ET</span></nav><div class="rule2" style="margin-top:12px"></div><h1 style="font-size:38px">Methodology</h1>
-<p class="deck">The thesis, stated plainly: <i>JF1 matched Bitcoin buy & hold (6,954% vs 8,250%) while cutting the worst drawdown from −83% to −54%; JF2 cut it to −47% with the best Sharpe (1.34) — both at roughly half the average exposure.</i></p>
+<p class="deck">The thesis, stated plainly: <i>JF1 matched Bitcoin buy & hold (6,954% vs 8,096%) while cutting the worst drawdown from −83% to −54%; JF2 cut it to −47% with the best Sharpe (1.34) — both at roughly half the average exposure.</i></p>
 <h2>1 · The index (JEB, 0–100)</h2>
 <table><tr><th>Pillar</th><th>Weight</th><th>Contents</th></tr>
 <tr><td>Price Action</td><td class="mono">40%</td><td>30/90d momentum percentile, volatility ratio 30/90, RSI-14 — vs trailing 365d</td></tr>
@@ -14,7 +14,7 @@
 <p class="note">Composite = weighted mean of available pillar scores (weights renormalize over fresh data — fail-degrade, never break). Weights v0.3 were set by the R1 brute sweep (1,771 combinations, walk-forward), not intuition.</p>
 <h2>2 · The books (JF1 · JF2)</h2>
 <p class="note">Each book holds between 0% (level A) and 100% (level E) in BTC, moving through five levels. A decision taken at the 08:30 ET run executes at the next daily close, charged 8bps per exposure change — no intraday, no leverage, no lookahead by construction.<br><br>
-<b>JF1 · Core</b> — bands at 30/45/55/70 with two-day confirmation: the temperature must hold a new band for two consecutive runs before exposure moves. Result over 2017–2026: 6,954% vs buy &amp; hold's 8,250%, but the worst drawdown was −54% instead of −83%, at 50% average exposure.<br><br>
+<b>JF1 · Core</b> — bands at 30/45/55/70 with two-day confirmation: the temperature must hold a new band for two consecutive runs before exposure moves. Result over 2017–2026: 6,954% vs buy &amp; hold's 8,096%, but the worst drawdown was −54% instead of −83%, at 50% average exposure.<br><br>
 <b>JF2 · Defensive</b> — the same levels behind a regime gate: when the walk-forward P(bull) model reads bearish, the maximum allowed level is capped. It trades a little return (7,137%) for the shallowest pain (−47%) and the best risk-adjusted return (Sharpe 1.34).</p>
 <h2>3 · The decision contracts</h2>
 <p class="note">Every level change is a typed record — <span style="font-family:var(--mono);font-size:12px">{noul: side, p} · {choice: LONG|HOLD|TP LONG|SL LONG} · {score: kelly/4} · {reason}</span> — published daily and archived forever. jev's primitives (NOUL, CHOICE, SCORE) own the decision; execution follows the record verbatim.</p>

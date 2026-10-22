@@ -1,10 +1,10 @@
 # Bitcoin sits in neutral.
 
-**JEB 51.2 · Mild · 2026-10-20** — the daily Bitcoin temperature, computed from free point-in-time data by the JevFinance oracle.
+**JEB 53.1 · Mild · 2026-10-21** — the daily Bitcoin temperature, computed from free point-in-time data by the JevFinance oracle.
 
-- Pillars: price 67.4 · on-chain 69.1 · social 18.7 · macro 30.5 (weights v0.3)
+- Pillars: price 71.8 · on-chain 67.9 · social 16.2 · macro 44.2 (weights v0.3)
 - Books: JF1 Core level D · JF2 Defensive level D (paper, live-tracked since 2026-09-19)
-- Thesis: JF1 matched Bitcoin buy & hold (6,954% vs 8,213%) while cutting the worst drawdown from −83% to −54%; JF2 cut it to −47% with the best Sharpe (1.34) — both at roughly half the average exposure.
+- Thesis: JF1 matched Bitcoin buy & hold (6,954% vs 8,341%) while cutting the worst drawdown from −83% to −54%; JF2 cut it to −47% with the best Sharpe (1.34) — both at roughly half the average exposure.
 
 Sections: [Archive](/archive/) · [Research](/research/) · [Workbench](/workbench/) · [Portfolio ledger](/portfolio/) · [Methodology](/methodology/) · [About](/about/)
 
